@@ -11,14 +11,14 @@
 # Sample Usage:
 #
 class xd7licenseserver (
-  $setup_svc_username,
-  $setup_svc_password,
-  $sourcepath,
-  $licensefilepath,
-  $rdslicensing                = 'install', #Can be 'existing', 'install', 'none'
-  $https                       = false,
-  $sslcertificatesourcepath    = '',
-  $sslcertificatekeysourcepath = '',
+  String $setup_svc_username,
+  String $setup_svc_password,
+  String $sourcepath,
+  String $licensefilepath,
+  Enum['install', 'existing', 'none'] $rdslicensing = 'install',
+  Optional[Boolean] $https                          = false,
+  Optional[String] $sslcertificatesourcepath        = '',
+  Optional[String] $sslcertificatekeysourcepath     = '',
 )  {
 
   contain xd7licenseserver::install
