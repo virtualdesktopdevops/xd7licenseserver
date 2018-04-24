@@ -1,1 +1,13 @@
+title: Citrix Xendesktop 7.x Licensing puppet module
+description: Puppet and Powershell DSC module installing and configuring the Citrix Xendesktop and Microsoft RDS license servers required for a Citrix Xendeskop 7.x enterprise deployment 
+google_site_verification: R71XDERzPOp9lUudi8X6iKrpcoIgDG_1HzRMz_TMaDY
+google_analytics: UA-12767493-6
 theme: jekyll-theme-slate
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-redirect-from
+  - jekyll-mentions
+jekyll-mentions:
+  base_url: http://www.virtualdesktopdevops.com
