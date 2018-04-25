@@ -26,11 +26,24 @@ The following options are available for a production-grade installation :
 - **`[String]` sourcepath** : (string) Path of a folder containing the Xendesktop 7.x installer (unarchive the ISO image in this folder).
 - **`[String]` licensefilepath** : (string) Path of a Citrix XenApp/XenDesktop license file.
 - **`[String]` rdslicensing** _(Optional, `['install'|'existing'|'none']`. Default is 'install')_: Specify RDS licensing configuration option 'install' to install RDS licensing on the same server than Citrix Licensing server, 'existing' to use an existing RDS licensing or RDS licensing in another Active Directory domain, 'none' to skip RDS licensing installation
+- **`[String]` existingrdslicenseserver** _(Required if rdslicensing = 'existing')_: Hostname of the existing RDS license server to use in this domain. Use the **NETBIOSDOMAINNAME\hostname** format is the RDS license server is located in another domain or forest.
 - **https** _(Optional, default is false)_: Deploy SSL certificate on IIS and activate SSL access to Storefront ? Default : false
 - **`[String]` sslcertificatesourcepath** _(Required if https = true)_: Location of the SSL public certificate file(.PEM or .CRT file WITHOUT private key). Can be local folder, UNC path, HTTP URL)
 - **`[String]` sslcertificatekeysourcepath** _(Required if https = true)_: Location of the SSL certificate private key file (.KEY file. Can be local folder, UNC path, HTTP URL)
 
 ### xd7licenseserver example code ###
 ~~~puppet
+node 'license01' {
+  class{'xd7licenseserver²':
+    setup_svc_username       => 'TESTLAB\svc-puppet',
+    setup_svc_password       => 'P@ssw0rd',
+    sourcepath               => '\\\\fileserver\\xendesktop715',
+    licensefilepath          => '\\\\fileserver\\licenses\xendesktop.lic',
+    rdslicensing             => 'install',
+    https                    => true,
+    sslcertificatesourcepath => '\\\\fileserver\\ssl\\cxlicensing.crt',
+    sslcertificatekeysourcepath => '\\\\fileserver\\ssl\\cxlicensing.key'
 
+  }
+}
 ~~~

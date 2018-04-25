@@ -16,6 +16,7 @@ class xd7licenseserver (
   String $sourcepath,
   String $licensefilepath,
   Enum['install', 'existing', 'none'] $rdslicensing = 'install',
+  Optional[String] $existingrdslicenseserver        = '',
   Optional[Boolean] $https                          = false,
   Optional[String] $sslcertificatesourcepath        = '',
   Optional[String] $sslcertificatekeysourcepath     = '',
