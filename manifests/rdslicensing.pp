@@ -21,8 +21,7 @@ class xd7licenseserver::rdslicensing inherits xd7licenseserver {
     #Add computer in Terminal Server License Servers group in Active Directory
   ->dsc_xadgroup{ 'TerminalServerLicenseServers':
       dsc_groupname            => 'Terminal Server License Servers',
-      #dsc_path                 => 'CN=Builtin,DC=domain-test,DC=com',
-      #dsc_groupscope           => 'DomainLocal',
+      dsc_groupscope           => 'DomainLocal',
       dsc_memberstoinclude     => "${facts['hostname']}\$",
       dsc_ensure               => 'present',
       dsc_psdscrunascredential => {'user' => $xd7licenseserver::setup_svc_username, 'password' => $xd7licenseserver::setup_svc_password}
@@ -35,8 +34,7 @@ class xd7licenseserver::rdslicensing inherits xd7licenseserver {
     #Add computer in Terminal Server License Servers group in Active Directory
     dsc_xadgroup{ 'TerminalServerLicenseServers':
       dsc_groupname            => 'Terminal Server License Servers',
-      #dsc_path                => "CN=Builtin,DC=domain-test,DC=com",
-      #dsc_groupscope          => 'DomainLocal',
+      dsc_groupscope          => 'DomainLocal',
       dsc_memberstoinclude     => "${xd7licenseserver::existingrdslicenseserver}\$",
       dsc_ensure               => 'present',
       dsc_psdscrunascredential => {'user' => $xd7licenseserver::setup_svc_username, 'password' => $xd7licenseserver::setup_svc_password}
