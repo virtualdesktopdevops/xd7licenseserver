@@ -5,7 +5,7 @@ This xd7licenseserver module installs and configures the Ctrix licensing server 
 ## Requirements ##
 The minimum Windows Management Framework (PowerShell) version required is 5.0 or higher, which ships with Windows 10 or Windows Server 2016, but can also be installed on Windows 7 SP1, Windows 8.1, Windows Server 2008 R2 SP1, Windows Server 2012 and Windows Server 2012 R2.
 
-This module requires a custom version of the puppetlabs-dsc module compiled with [XenDesktop7](https://github.com/VirtualEngine/XenDesktop7) Powershell DSC resource as a dependency. Ready to use virtualdesktopdevops/dsc v1.5.0 puppet module provided on [Puppet Forge](https://forge.puppet.com/virtualdesktopdevops/dsc).
+This module requires a custom version of the puppetlabs-dsc module compiled with [XenDesktop7](https://github.com/VirtualEngine/XenDesktop7) Powershell DSC resource as a dependency. Ready to use virtualdesktopdevops/dsc v1.6.0 puppet module provided on [Puppet Forge](https://forge.puppet.com/virtualdesktopdevops/dsc).
 
 ## Change log ##
 A full list of changes in each version can be found in the [change log](CHANGELOG.md).
@@ -35,15 +35,14 @@ The following options are available for a production-grade installation :
 ~~~puppet
 node 'license01' {
   class{'xd7licenseserver²':
-    setup_svc_username       => 'TESTLAB\svc-puppet',
-    setup_svc_password       => 'P@ssw0rd',
-    sourcepath               => '\\\\fileserver\\xendesktop715',
-    licensefilepath          => '\\\\fileserver\\licenses\xendesktop.lic',
-    rdslicensing             => 'install',
-    https                    => true,
-    sslcertificatesourcepath => '\\\\fileserver\\ssl\\cxlicensing.crt',
+    setup_svc_username          => 'TESTLAB\svc-puppet',
+    setup_svc_password          => 'P@ssw0rd',
+    sourcepath                  => '\\\\fileserver\\xendesktop715',
+    licensefilepath             => '\\\\fileserver\\licenses\xendesktop.lic',
+    rdslicensing                => 'install',
+    https                       => true,
+    sslcertificatesourcepath    => '\\\\fileserver\\ssl\\cxlicensing.crt',
     sslcertificatekeysourcepath => '\\\\fileserver\\ssl\\cxlicensing.key'
-
   }
 }
 ~~~
